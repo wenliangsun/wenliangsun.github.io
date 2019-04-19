@@ -128,5 +128,5 @@ git git@github.com:wenliangsun/wenliangsun.github.io.git
 
 [1] https://www.jianshu.com/p/fabb01427203
 
-[2]https://keysaim.github.io/post/blog/2017-08-15-how-to-setup-your-github-io-blog/
+[2] https://keysaim.github.io/post/blog/2017-08-15-how-to-setup-your-github-io-blog/
 
