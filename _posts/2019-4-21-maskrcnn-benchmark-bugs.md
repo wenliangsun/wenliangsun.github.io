@@ -1,4 +1,14 @@
-# facebook-maskrcnn-benchmark 踩过的坑(DOTA 数据集)
+---
+layout: post
+title: "facebook-maskrcnn-benchmark 框架中踩过的坑(DOTA 数据集)"
+subtitle: 'Object Detection structure bugs'
+author: "WenlSun"
+header-style: text
+tags:
+  - Object Detection
+  - 笔记
+  - pytorch
+---
 
 ### Out of Memory(内存溢出)
 
