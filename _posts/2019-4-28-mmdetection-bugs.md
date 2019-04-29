@@ -16,7 +16,7 @@ tags:
 + `/usr/bin/env: ‘bash\r’: No such file or directory`
 + 解决方法如下图所示
 
-![1556454231727](F:\Projects\wenliangsun.github.io\img\post-mmdetection-bug1.png)
+![](/img/post-mmdetection-bug1.png)
 
 + 同样的操作处理`dist_train.sh` 如果需要指定使用那一块`GPU`需要修改`dist_train.sh`文件为：
 
@@ -33,7 +33,7 @@ tags:
 
 在安装使用`python setup.py develop or pip install -e  `来解决。
 
-![1556454611585](F:\Projects\wenliangsun.github.io\img\post-mmdetection-bug2.png)
+![](/img/post-mmdetection-bug2.png)
 
 ### 运行 dist_train.sh 文件报 Address already in use错误
 
