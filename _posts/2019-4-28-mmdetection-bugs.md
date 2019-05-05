@@ -92,7 +92,7 @@ bug还在挖掘中。。。
     }
     ```
 
-    + 修改`mmdet/datasets/coco.py`和`mmdet/datasets/custom.py`文件, 使代码能够根据测试代码读取相应的测试数据. 其中`custom.py`文件中主要修改`__init__()` 函数中的给类的属性赋值的顺序,即把`test_mode`这个属性的赋值放在读取`ann_file`(即调用`load_annotations()`函数)之前. coco.py`文件修改`load_annotations()`函数, 使在读取`json`文件的时候根据是训练还是测试读取相应的`json`文件(其中测试的时候读取的`json`文件只包含图片信息).
+    + 修改`mmdet/datasets/coco.py`和`mmdet/datasets/custom.py`文件, 使代码能够根据测试代码读取相应的测试数据. 其中`custom.py`文件中主要修改`__init__()` 函数中的给类的属性赋值的顺序,即把`test_mode`这个属性的赋值放在读取`ann_file`(即调用`load_annotations()`函数)之前. `coco.py`文件修改`load_annotations()`函数, 使在读取`json`文件的时候根据是训练还是测试读取相应的`json`文件(其中测试的时候读取的`json`文件只包含图片信息).
 
     ```python
     # TODO custom.py 文件中需要修改的地方(直接复制粘贴替换__init__函数)
@@ -215,7 +215,7 @@ bug还在挖掘中。。。
             return img_infos
     ```
 
-  + `mmdet/models/detectors/base.py`和`mmdet/datasets/custom.py`. 使得可以利用网络自带的预测代码,进行多尺度和翻转预测.其中在`custom.py`中的`prepare_test_img()`函数中的内部函数`prepare_single()`中, 给`_img_meta` 新增了预测图像的名称属性`img_name=img_info['filename']`(可以在预测的时候知道是哪副图片). 在`base.py`文件中新增了一个`get_result()`函数,其类似于`show_result()`函数,只是最后不是显示图像而是把`bboxes`和`labels`返回.新增函数如下:
+  + `mmdet/models/detectors/base.py`和`mmdet/datasets/custom.py`. 使得可以利用网络自带的预测代码,进行多尺度和翻转预测.其中在`custom.py`中的`prepare_test_img()`函数中的内部函数`prepare_single()`中, 给`_img_meta` 新增了预测图像的名称属性`img_name=img_info['filename']`(可以在预测的时候知道是哪幅图片). 在`base.py`文件中新增了一个`get_result()`函数,其类似于`show_result()`函数,只是最后不是显示图像而是把`bboxes`和`labels`返回.新增函数如下:
 
   ```python
   def get_result(self,
@@ -263,6 +263,10 @@ bug还在挖掘中。。。
                   for i, bbox in enumerate(bbox_result)
               ]
               labels = np.concatenate(labels)
+              # TODO 新增设置阈值的代码
+              inds = np.where(bboxes[:, -1] > score_thr)[0]
+              bboxes = bboxes[inds]
+              labels = labels[inds]
   
               return bboxes, labels
   ```
@@ -350,7 +354,6 @@ bug还在挖掘中。。。
               workers_per_gpu=args.proc_per_gpu)
   ```
 
-  
 
 
 
