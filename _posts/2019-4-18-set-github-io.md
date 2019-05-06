@@ -73,6 +73,31 @@ git git@github.com:wenliangsun/wenliangsun.github.io.git
 
 + 在浏览器中输入`用户名.github.io`即可查看自己的博文
 
+#### 配置`github page` 使得支持`Letax`公式
+
+在`_include/head.html`文件中的`<head>...</head>`中添加以下代码
+
+```html
+<head>
+    ...
+    <script type="text/x-mathjax-config"> 
+   		MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); 
+   	</script>
+    <script type="text/x-mathjax-config">
+    	MathJax.Hub.Config({tex2jax: {
+             inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+             processEscapes: true
+           }
+         });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+    </script>
+    ...
+</head>
+```
+
+
+
 ### `jekyll` 是如何工作的
 
 在`jekyll`解析你的网站之前，需要确保网站有以下目录结构：
