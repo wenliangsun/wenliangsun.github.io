@@ -3,6 +3,7 @@ layout: post
 title: "facebook-maskrcnn-benchmark 框架中踩过的坑(DOTA 数据集)"
 subtitle: 'Object Detection structure bugs'
 author: "WenlSun"
+header-img: "img/post-bugs.jpg"
 header-style: text
 tags:
   - Object Detection

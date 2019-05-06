@@ -3,6 +3,7 @@ layout: post
 title: "论文笔记：FCOS: Fully Convolutational One-Stage Object Detection"
 subtitle: 'Fully Convolutational One-Stage Object Detection'
 author: "WenlSun"
+header-img: "img/post-bg.jpg"
 header-style: text
 tags:
   - Object Detection

@@ -3,6 +3,7 @@ layout: post
 title: "论文笔记：CenterNet: Object Detection with Keypoint Triplets"
 subtitle: 'Object Detection'
 author: "WenlSun"
+header-img: "img/post-bg.jpg"
 header-style: text
 tags:
   - Object Detection
