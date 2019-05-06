@@ -9,20 +9,6 @@ tags:
   - 笔记
 ---
 
-```html
-<head>
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-            tex2jax: {
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-            inlineMath: [['$','$']]
-            }
-        });
-    </script>
-</head>
-```
-
 [论文链接](https://arxiv.org/abs/1509.04874)，[官方代码]()，[通天塔译文](http://tongtianta.site/paper/6364)，[参考文章](https://zhuanlan.zhihu.com/p/44021975)
 
 ### DenseBox主要贡献
