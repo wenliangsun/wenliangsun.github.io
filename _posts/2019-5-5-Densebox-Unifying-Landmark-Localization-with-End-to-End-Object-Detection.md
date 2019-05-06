@@ -3,7 +3,7 @@ layout: post
 title: "论文笔记：DenseBox:Unifying Landmark Localization with End to End Object Detection"
 subtitle: 'Object Detection'
 author: "WenlSun"
-header-img: "img/post-bg.jpg"
+header-img: "/img/post-bg.jpg"
 header-style: text
 tags:
   - Object Detection
@@ -20,7 +20,7 @@ tags:
 
 ### DenseBox 概述
 
-![](/img/post-DenesBox-img1.png)
+![](/img/DenseBox/post-DenesBox-img1.png)
 
 ### 训练标签生成
 
@@ -34,16 +34,16 @@ DenseBox没有使用整张图像作为输入进行训练（一张图片上的背
 
 通过上面方法得到的patch是正patch，除了这些正patch，DenseBox还随机采样等数量的随机 patch。同时使用翻转，位移和尺度变换三种数据增强的方法产生样本以增强模型的泛化能力。训练集的标签是一个$60\times 60\times 5$的热图，$60\times 60$ 表示热图的尺寸，5表示热图的通道数。
 
-![](/img/post-DenesBox-img2.png)
+![](/img/DenseBox/post-DenesBox-img2.png)
 
 + 图中最前的热图用于标注人脸区域置信度，前景为1，背景为0。DenseBox中没有使用左图中的矩形区域，而是以半径$r_c$为 gt 的高的0.3倍的圆作为标签值，而圆形的中心就是热图的中心，即右图中白色区域。
 + 图中后面的四个特征图分别表示像素点到最近的gt的四个边界的距离，如下图所示，其中gt为蓝色矩形，表示为$d=(d_{x^t}^*,d_{x^b}^*,d_{y^t}^*,d_{y^b}^*)​$，绿色为预测矩形，表示为$\hat{d}=\left(\hat{d}_{x^{t}}, \hat{d}_{x^{b}}, \hat{d}_{y^{k}}, \hat{d}_{y^{b}}\right)​$。如果训练样本中人的脸比较密集，一个patch中可能出现多个人脸，如果某个人脸和中心点处的人脸的高的比例在[0.8,1.25]之间，则认为改样本为正样本。
 
-![](/img/post-DenesBox-img3.png)
+![](/img/DenseBox/post-DenesBox-img3.png)
 
 ### 网络结构
 
-![](/img/post-DenesBox-img4.png)
+![](/img/DenseBox/post-DenesBox-img4.png)
 
 DenseBox 使用16层的VGG19作为backbone，但只使用前12层。后面接了4个$1\times1$的卷积层，其中前两个的最后一层输出类别的得分图，后两个的最后层用来回归边界框。需要注意的是在网络的Conv3_4和Conv4_4之间发生了一次特征融合，融合的方式是Conv4_4经过双线性差值上采样得到与Conv3_4相同分辨率的特征图。通过计算我们可以得知Conv3_4层的感受野的尺寸是 $48\times48 $，该层的尺寸和标签中的人脸尺寸接近，用于捕捉人脸区域的关键特征；Conv4_4层的感受野的大小是 $118\times118$，用于捕捉人脸的上下文特征。网络出了前12层使用VGG19在ImageNet上的预训练权重外，其余的层使用Xavier进行初始化。
 
@@ -92,7 +92,7 @@ $$
 
 ### 结合关键点检测的多任务模型
 
-![](/img/post-DenesBox-img5.png)
+![](/img/DenseBox/post-DenesBox-img5.png)
 
 论文中指出当DenseBox加入关键点检测的任务分支时模型的精度会进一步提升，这时只需要在图3的conv3_4和conv4_4融合之后的结果上添加一个用于关键点检测的分支即可，分支的详细结构如图所示。
 

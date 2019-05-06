@@ -3,7 +3,7 @@ layout: post
 title: "使用 github.io 创建自己的博客"
 subtitle: 'Create your own blog with github.io'
 author: "WenlSun"
-header-img: "img/post-bugs.jpg"
+header-img: "/img/post-bugs.jpg"
 header-style: text
 tags:
   - 笔记
@@ -14,19 +14,19 @@ tags:
 
 首先需要有自己的 [github](https://github.com/) 账号，然后创建一个新仓库，这个新的仓库就是存放你的博客的地方。注意：仓库的名字应该为`用户名.github.io`，其中`用户名`为你的 github 的账户名称。例如：你的 github 账户名为：`wenliangsun`,则创建的仓库名称为`wenliangsun.github.io`。
 
-![](/img/post-set-github-io-create-repo.png)
+![](/img/set-github/post-set-github-io-create-repo.png)
 
-![](/img/post-set-github-io-create-repo2.png)
+![](/img/set-github/post-set-github-io-create-repo2.png)
 
 ### 设置参数
 
 > 创建完仓库后，进入新创建的仓库，找到设置，进入设置界面。
 
-![](/img/post-set-github-io-set-repo.png)
+![](/img/set-github/post-set-github-io-set-repo.png)
 
-![](/img/post-set-github-io-set-repo2.png)
+![](/img/set-github/post-set-github-io-set-repo2.png)
 
-![](/img/post-set-github-io-set-repo3.png)
+![](/img/set-github/post-set-github-io-set-repo3.png)
 
 > 至此，在浏览器中输入`用户名.github.io`就可以看到效果。
 
@@ -52,13 +52,13 @@ git git@github.com:wenliangsun/wenliangsun.github.io.git
 
 #### 将huxpro.github.io中的文件(除.git外)复制到自己的github.io的文件夹中
 
-![](/img/post-set-github-io-select-theme.png)
+![](/img/set-github/post-set-github-io-select-theme.png)
 
 #### 修改`_config.yml`配置文件
 
 根据自己的信息修改配置文件
 
-![](/img/post-set-github-io-select-theme2.png)
+![](/img/set-github/post-set-github-io-select-theme2.png)
 
 #### 编写和发布博客
 
