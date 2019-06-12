@@ -355,6 +355,61 @@ bug还在挖掘中。。。
               workers_per_gpu=args.proc_per_gpu)
   ```
 
++ 解决在计算`IoU`时出现`Out of memory`的问题（2019-6-12）
+
+  修改代码文件`mmdet/core/assigners/max_iou_assigners.py`中的`assign()`函数.
+
+  ```python
+  if bboxes.shape[0] == 0 or gt_bboxes.shape[0] == 0:
+              raise ValueError('No gt or bboxes')
+              
+          USE_CPU_MODE = True
+          N = gt_bboxes.shape[0]
+          if USE_CPU_MODE and N>100:
+              bboxes = bboxes[:, :4]
+              bboxes = bboxes.cpu()
+              gt_bboxes = gt_bboxes.cpu()
+              if gt_bboxes_ignore is not None:
+                  gt_bboxes_ignore = gt_bboxes_ignore.cpu()
+              if gt_labels is not None:
+                  gt_labels = gt_labels.cpu()
+              overlaps = bbox_overlaps(gt_bboxes, bboxes)
+  
+              if (self.ignore_iof_thr > 0) and (gt_bboxes_ignore is not None) and (
+                      gt_bboxes_ignore.numel() > 0):
+                  if self.ignore_wrt_candidates:
+                      ignore_overlaps = bbox_overlaps(
+                          bboxes, gt_bboxes_ignore, mode='iof')
+                      ignore_max_overlaps, _ = ignore_overlaps.max(dim=1)
+                  else:
+                      ignore_overlaps = bbox_overlaps(
+                          gt_bboxes_ignore, bboxes, mode='iof')
+                      ignore_max_overlaps, _ = ignore_overlaps.max(dim=0)
+                  overlaps[:, ignore_max_overlaps > self.ignore_iof_thr] = -1
+              assign_result = self.assign_wrt_overlaps(overlaps, gt_labels)
+              assign_result.gt_inds = assign_result.gt_inds.cuda()
+              assign_result.max_overlaps = assign_result.max_overlaps.cuda()
+              if assign_result.labels is not None:
+                  assign_result.labels = assign_result.labels.cuda()
+          else:
+              bboxes = bboxes[:, :4]
+              overlaps = bbox_overlaps(gt_bboxes, bboxes)
+  
+              if (self.ignore_iof_thr > 0) and (gt_bboxes_ignore is not None) and (
+                      gt_bboxes_ignore.numel() > 0):
+                  if self.ignore_wrt_candidates:
+                      ignore_overlaps = bbox_overlaps(
+                          bboxes, gt_bboxes_ignore, mode='iof')
+                      ignore_max_overlaps, _ = ignore_overlaps.max(dim=1)
+                  else:
+                      ignore_overlaps = bbox_overlaps(
+                          gt_bboxes_ignore, bboxes, mode='iof')
+                      ignore_max_overlaps, _ = ignore_overlaps.max(dim=0)
+                  overlaps[:, ignore_max_overlaps > self.ignore_iof_thr] = -1
+  
+              assign_result = self.assign_wrt_overlaps(overlaps, gt_labels)
+          return assign_result
+  ```
 
 
 
