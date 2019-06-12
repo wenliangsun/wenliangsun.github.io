@@ -40,17 +40,17 @@ $$
 
 + 集体的算法流程如下：
 
-![1560334027321](F:\Projects\wenliangsun.github.io\img\CACMOD-CNN\fig2.png)
+![](/img/CACMOD-CNN/fig2.png)
 
 
 
-![1560334066091](F:\Projects\wenliangsun.github.io\img\CACMOD-CNN\fig3.png)
+![1560334066091](/img/CACMOD-CNN/fig3.png)
 
 
 
 ## Merge the Context Information to Improve the Feature Representation
 
-![1560334156126](F:\Projects\wenliangsun.github.io\img\CACMOD-CNN\fig4.png)
+![1560334156126](/img/CACMOD-CNN/fig4.png)
 
 `RoI` 池化后的特征通常设置为$7\times 7$.意味着原图中目标需要$112\times 112$ 大小，但是遥感影像中一类目标类别的大小远远小于$112\times 112$ ,尽管`RoI`池化可以通过上采样或下采样来调整特征图的大小，但由于特征表达类别信息的判别能力小，小特征图可能降低目标检测的准确性。文中将上下文信息引入，通过将预测框以中心取其两倍大小的框，然后`ROI`池化后与原始的`ROI`池化后的特征进行拼接，然后进行分类和回归（对于小目标检测很有用）。
 
@@ -62,11 +62,14 @@ S_{i}=\left\{\begin{array}{l}{S_{i}, IOU\left(B_{\max }, B_{i}\right)<N_{t}} \\ 
 $$
 算法流程如下：
 
-![1560335471614](F:\Projects\wenliangsun.github.io\img\CACMOD-CNN\fig5.png)
+![1560335471614](/img/CACMOD-CNN/fig5.png)
 
+## 实验结果
 
+![1560349254391](/img/CACMOD-CNN/fig6.png)
 
+![1560349278007](/img/CACMOD-CNN/fig7.png)
 
+![1560349295674](/img/CACMOD-CNN/fig8.png)
 
-
-
+![1560349320299](/img/CACMOD-CNN/fig9.png)
