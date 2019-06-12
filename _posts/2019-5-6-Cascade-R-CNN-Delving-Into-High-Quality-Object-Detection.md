@@ -21,13 +21,15 @@ tags:
 
 作者针对提出的问题进行实验佐证：
 
+图1(c)给出了经过一次回归以后目标候选框和真实目标框匹配的IoU变化，横轴代表回归前，纵轴代表回归后。不同的颜色反映使用不同的IoU阈值训练的检测器。
+
 ![](F:\Projects\wenliangsun.github.io\img\Cascade-R-CNN\img2.png)
 
 
 
 
 
-
+未完成，待填 。。。。
 
 
 

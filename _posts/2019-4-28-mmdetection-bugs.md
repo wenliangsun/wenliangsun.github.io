@@ -289,7 +289,6 @@ bug还在挖掘中。。。
       
       prog_bar = mmcv.ProgressBar(len(dataset))
       for i, data in enumerate(data_loader):
-          img_name = data['img_meta'][0].data[0][0]['img_name']
           with torch.no_grad():
               result = model(return_loss=False, rescale=not show, **data)
           results.append(result)
@@ -297,6 +296,7 @@ bug还在挖掘中。。。
               model.module.show_result(data, result, dataset.img_norm_cfg,
                                        dataset=dataset.CLASSES)
           if output_dir is not None:
+              img_name = data['img_meta'][0].data[0][0]['img_name']
               bboxes,labels = model.module.get_result(data, result, dataset.img_norm_cfg,
                                        dataset=dataset.CLASSES)
               for bbox,label in zip(bboxes,labels):
