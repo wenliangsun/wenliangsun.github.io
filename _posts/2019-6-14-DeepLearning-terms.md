@@ -9,7 +9,7 @@ tags:nms
   - Deep Learning
 ---
 
-# 损失函数
+# 损失函数(代价函数)
 
 
 
