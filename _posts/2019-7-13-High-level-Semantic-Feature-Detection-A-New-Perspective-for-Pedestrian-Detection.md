@@ -1,6 +1,6 @@
 ---
 layout: post
-title: High-Level Semantic Feature Detection：A New Perspective for Pedestrian Detection
+title: 论文笔记：High-Level Semantic Feature Detection：A New Perspective for Pedestrian Detection
 subtitle: CSP
 author: WenlSun
 header-img: "img/post-paper-bg.jpg"
