@@ -55,6 +55,7 @@ tags:
 ## 损失函数
 
 对于中心预测分支，我们通过交叉损失熵(`cross entropy loss`)将其表示为分类任务。但是，很难确定”确切“的中心点，因此正负样本难以指定，会给训练带来困难。为了减少围绕正的这些负的的模糊性，作者对每个正的的中心使用一个2D的高斯mask。
+
 $$
 \begin{array}{l}{M_{i j}=\max _{k=1,2, \ldots, K} G\left(i, j ; x_{k}, y_{k}, \sigma_{w_{k}}, \sigma_{h_{k}}\right)} \\ {G\left(i, j ; x, y, \sigma_{w}, \sigma_{h}\right)=e^{-\left(\frac{(i-x)^{2}}{2 \sigma_{w}^{2}}+\frac{(j-y)^{2}}{2 \sigma_{h}^{2}}\right)}}\end{array}
 $$
