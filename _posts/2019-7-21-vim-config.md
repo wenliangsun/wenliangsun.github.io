@@ -1,10 +1,10 @@
 ---
-layout：post
+layout: post
 title: "vim 编辑器配置"
-subtitle："vim在不同系统下的配置(Windows和Ubuntu16.04)"
-author：WenlSun"
+subtitle: "vim在不同系统下的配置(Windows和Ubuntu16.04)"
+author: WenlSun"
 header-style: text
-tag：
+tag:
   - Vim
 ---
 
